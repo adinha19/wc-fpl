@@ -19,7 +19,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("joinRoom", async (roomId) => {
+  socket.on("joinRoom", (roomId) => {
     console.log(`User joined room ${roomId}`);
 
     socket.join(roomId);
