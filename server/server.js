@@ -20,16 +20,19 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   socket.on("joinRoom", (roomId) => {
-    console.log(`User joined room ${roomId}`);
-
     socket.join(roomId);
+
+    console.log(`User ${socket.id} joined room ${roomId}`);
 
     startCronJob(roomId, io);
   });
 
   socket.on("leaveRoom", (roomId) => {
-    console.log(`User ${socket.id} left room ${roomId}`);
     socket.leave(roomId);
+    socket.disconnect();
+
+    console.log(`User ${socket.id} left room ${roomId}`);
+
     stopCronJob(roomId);
   });
 
