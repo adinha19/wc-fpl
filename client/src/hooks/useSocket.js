@@ -22,7 +22,7 @@ const useSocket = (url, leagueId) => {
       socket.disconnect();
     };
     // eslint-disable-next-line
-  }, [url, id]);
+  }, [url, leagueId]);
 
   return { data };
 };
