@@ -5,7 +5,7 @@ import "./Table.css";
 
 const Table = () => {
   const { id } = useParams();
-  const { data } = useSocket("http://localhost:3005", id);
+  const { data } = useSocket(id);
 
   return !data ? (
     <h1 className="loading-message">Loading...</h1>
@@ -20,6 +20,7 @@ const Table = () => {
         <thead>
           <tr>
             <th>Player Name</th>
+            <th>Team Name</th>
             <th>Gameweek Points</th>
             <th>Total Points</th>
           </tr>
@@ -28,6 +29,7 @@ const Table = () => {
           {data.leagueStadings.map((result) => (
             <tr key={result.entry}>
               <td>{result.player_name}</td>
+              <td>{result.entry_name}</td>
               <td>{result.points}</td>
               <td>{result.total_points}</td>
             </tr>
