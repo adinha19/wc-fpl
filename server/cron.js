@@ -63,7 +63,6 @@ function startCronJob(roomId, io) {
   cronJobs[roomId] = cron.schedule("*/3 * * * * *", async () => {
     const data = await updateLeagueStandings(roomId);
     if (!data) {
-      io.to(roomId).leave(roomId);
       cronJobs[roomId].stop();
       delete cronJobs[roomId];
       return;
