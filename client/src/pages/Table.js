@@ -14,7 +14,7 @@ const Table = () => {
       <Link to="/" className="home-button">
         Home
       </Link>
-      <h1>{data.leagueName}</h1>
+      <h1>League Name: {data.leagueName}</h1>
       <h2>Game Week: {data.gameWeek}</h2>
       <table className="styled-table">
         <thead>

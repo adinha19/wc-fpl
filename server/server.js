@@ -31,9 +31,9 @@ io.on("connection", (socket) => {
 
   socket.on("leaveRoom", (roomId) => {
     socket.leave(roomId);
-    socket.disconnect();
-
     console.log(`User ${socket.id} left room ${roomId}`);
+
+    socket.disconnect(true);
 
     stopCronJob(roomId);
   });
