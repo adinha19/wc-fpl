@@ -46,7 +46,13 @@ const updateLeagueStandings = async (roomId) => {
 
     gameWeeks[roomId]++;
 
-    return managerData.sort((a, b) => b.total_points - a.total_points);
+    return {
+      leagueStadings: managerData.sort(
+        (a, b) => b.total_points - a.total_points
+      ),
+      gameWeek: gameWeeks[roomId],
+      leagueName: standingsData.league.name,
+    };
   } catch (error) {
     console.error("Error fetching standings data:", error.message);
   }

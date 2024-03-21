@@ -13,6 +13,10 @@ const useSocket = (url, leagueId) => {
       socket.emit("joinRoom", roomId);
     });
 
+    socket.on("connection", (id) => {
+      console.log(`Connected to server with id: ${id}`);
+    });
+
     socket.on("currentLeagueStanding", (data) => {
       if (data) setData(data);
     });
